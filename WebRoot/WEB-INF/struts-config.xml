@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources>
+    <data-source key="datasource" type="org.apache.commons.dbcp.BasicDataSource">
+      <set-property property="password" value="575988" />
+      <set-property property="minCount" value="3" />
+      <set-property property="maxCount" value="10" />
+      <set-property property="username" value="root" />
+      <set-property property="driverClassName" value="com.mysql.jdbc.Driver" />
+      <set-property property="description" value="test" />
+      <set-property property="url" value="jdbc:mysql://localhost/eshop" />
+      <set-property property="readOnly" value="false" />
+      <set-property property="autoCommit" value="true" />
+    </data-source>
+  </data-sources>
+  <form-beans >
+    <form-bean name="userForm" type="com.market.struts.form.UserForm" />
+    <form-bean name="registerForm" type="com.market.struts.form.RegisterForm" />
+    <form-bean name="sellForm" type="com.market.struts.form.SellForm" />
+    <form-bean name="buyForm" type="com.market.struts.form.BuyForm" />
+    <form-bean name="getForm" type="com.market.struts.form.GetForm" />
+
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards >
+    
+    
+
+  </global-forwards>
+
+  <action-mappings >
+    <action
+      attribute="userForm"
+      input="/login.jsp"
+      name="userForm"
+      path="/user"
+      scope="request"
+      type="com.market.struts.action.UserAction"
+      validate="true">
+      <forward name="welcome" path="/welcome.jsp" />
+      <forward name="failure" path="/error.jsp" />
+    </action>
+    <action
+      attribute="registerForm"
+      input="/login.jsp"
+      name="registerForm"
+      path="/register"
+      scope="request"
+      type="com.market.struts.action.RegisterAction"
+      validate="true">
+      <forward name="welcome" path="/welcome.jsp" />
+      <forward name="failure" path="/usernameerror.jsp" />
+    </action>
+    <action
+      attribute="sellForm"
+      input="/sell.jsp"
+      name="sellForm"
+      path="/sell"
+      scope="request"
+      type="com.market.struts.action.SellAction">
+      <forward name="selldetail" path="/selldetail.jsp" />
+    </action>
+    <action
+      attribute="getForm"
+      input="/get.jsp"
+      name="getForm"
+      path="/get"
+      scope="request"
+      type="com.market.struts.action.GetAction"
+      validate="false">
+      <forward name="list" path="/list.jsp" />
+    </action>
+    <action
+      path="/display"
+      type="com.market.struts.action.DisplayAction"
+      validate="false">
+      <forward name="get" path="/get.jsp" />
+    </action>
+    <action
+      path="/detail"
+      type="com.market.struts.action.DetailAction"
+      validate="false">
+      <forward name="detail" path="/detail.jsp" />
+    </action>
+    <action
+      path="/details"
+      type="com.market.struts.action.DetailsAction"
+      validate="false">
+      <forward name="details" path="/details.jsp" />
+    </action>
+    <action
+      path="/addcar"
+      type="com.market.struts.action.AddcartAction"
+      validate="false">
+      <forward name="car" path="/car.jsp" />
+    </action>
+    <action
+      path="/delete"
+      type="com.market.struts.action.DeleteAction"
+      validate="false">
+      <forward name="car" path="/car.jsp" />
+      <forward name="delerror" path="/delerror.jsp" />
+      
+    </action>
+    
+    
+
+
+  </action-mappings>
+
+  <message-resources parameter="com.market.struts.ApplicationResources" />
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+		<set-property property="stopOnFirstError" value="true" />
+  </plug-in>
+</struts-config>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+	<formset>
+		<form name="userForm">
+			<field property="username" depends="required">
+				<arg0 key="input.user" />                       
+			</field>
+			<field property="password" depends="required,minlength">
+				<arg0 key="input.password" />
+				<arg1 name="minlength" key="${var:minlength}" resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+			</field>
+		</form>	
+	<form name="registerForm">
+			<field property="username" depends="required">
+				<arg0 key="input.user" />                       
+			</field>
+			<field property="password" depends="required,minlength">
+				<arg0 key="input.password" />
+				<arg1 name="minlength" key="${var:minlength}" resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+			</field>
+		</form>
+	<form name="sellForm">
+	   <field property="name" depends="required">
+			 <arg0 key="input.name" />
+      </field>
+      <field property="price" depends="required,float">
+			 <arg0 key="input.price" />
+      </field>
+      <field property="amount" depends="required,integer">
+			 <arg0 key="input.amount" />
+      </field>
+      
+      </form>
+	</formset>
+</form-validation>
